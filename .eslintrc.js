@@ -16,7 +16,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    'prettier/prettier': 2,
+    'prettier/prettier': 0,
     quotes: ['error', 'single'],
     'no-console': 0, // Means warning
     'no-var': 'error',

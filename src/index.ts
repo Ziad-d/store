@@ -6,7 +6,7 @@ const PORT = 3000;
 const app: Application = express();
 
 // add routing for / path
-app.get('/', (req: Request, res: Response) => {
+app.get('/api', (req: Request, res: Response) => {
   res.json({
     message: 'Hello World',
   });
