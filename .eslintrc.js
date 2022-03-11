@@ -18,7 +18,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 2,
     quotes: ['error', 'single'],
-    'no-console': 1, // Means warning
+    'no-console': 0, // Means warning
     'no-var': 'error',
     'prefer-const': 'error',
   },
