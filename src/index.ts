@@ -4,7 +4,6 @@ import helmet from 'helmet';
 import RateLimit from 'express-rate-limit';
 import errorMiddleware from './middleware/error.middleware';
 import config from './config';
-import db from './database';
 
 const PORT = config.port || 3000;
 

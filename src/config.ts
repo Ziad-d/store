@@ -1,3 +1,4 @@
+// importing env var to pass it to the database instance when creating new pool
 import dotenv from 'dotenv';
 
 dotenv.config();
