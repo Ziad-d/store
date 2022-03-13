@@ -2,6 +2,7 @@ import express, { Application, Request, response, Response } from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import RateLimit from 'express-rate-limit';
+import routes from './routes';
 import errorMiddleware from './middleware/error.middleware';
 import config from './config';
 
@@ -30,19 +31,12 @@ app.use(
   })
 );
 
+app.use('/api', routes);
+
 // add routing for / path
 app.get('/', (req: Request, res: Response) => {
-  throw new Error('Error exist');
   res.json({
     message: 'Hello World',
-  });
-});
-
-// post request
-app.post('/', (req: Request, res: Response) => {
-  res.json({
-    message: 'Hello World from post',
-    data: req.body,
   });
 });
 
