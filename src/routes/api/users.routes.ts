@@ -1,10 +1,14 @@
 import { Router } from 'express';
 import * as controllers from '../../controllers/users.controllers';
+import authenticationMiddleware from '../../middleware/authentication.middleware';
 
 const routes = Router();
 
 // api/users
-routes.route('/').get(controllers.getMany).post(controllers.create);
+routes
+  .route('/')
+  .get(authenticationMiddleware, controllers.getMany)
+  .post(controllers.create);
 routes
   .route('/:id')
   .get(controllers.getOne)
@@ -13,4 +17,5 @@ routes
 
 // authentication
 routes.route('/authenticate').post(controllers.authenticate);
+
 export default routes;
