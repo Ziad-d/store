@@ -11,9 +11,9 @@ routes
   .post(controllers.create);
 routes
   .route('/:id')
-  .get(controllers.getOne)
-  .patch(controllers.updateOne)
-  .delete(controllers.deleteOne);
+  .get(authenticationMiddleware, controllers.getOne)
+  .patch(authenticationMiddleware, controllers.updateOne)
+  .delete(authenticationMiddleware, controllers.deleteOne);
 
 // authentication
 routes.route('/authenticate').post(controllers.authenticate);
