@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from 'express';
 import config from '../config';
 import jwt from 'jsonwebtoken';
 import Error from '../interfaces/error.interface';
-import routes from '../routes';
 
 const handleUnauthorizedError = (next: NextFunction) => {
   const error: Error = new Error('Login Error, Please login again');
