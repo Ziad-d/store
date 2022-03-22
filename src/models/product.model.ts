@@ -1,6 +1,5 @@
 import Product from '../types/product.type';
 import db from '../database';
-import { getMany } from '../controllers/users.controllers';
 
 class ProductModel {
   // create

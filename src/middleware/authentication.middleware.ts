@@ -1,7 +1,7 @@
-import { NextFunction, Request, Response } from 'express';
-import config from '../config';
+import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import Error from '../interfaces/error.interface';
+import config from '../config';
 
 const handleUnauthorizedError = (next: NextFunction) => {
   const error: Error = new Error('Login Error, Please login again');
@@ -17,7 +17,7 @@ const validateTokenMiddleware = (
   try {
     // get authHeader
     const authHeader = req.get('Authorization');
-    // check authHeader validate
+    // get authHeader
     if (authHeader) {
       // get value of token
       const bearer = authHeader.split(' ')[0].toLowerCase();
@@ -34,17 +34,18 @@ const validateTokenMiddleware = (
           next();
           // failed to authenticate user
         } else {
+          // Failed to authenticate user.
           handleUnauthorizedError(next);
         }
-        // token type not bearer
       } else {
+        // token type not bearer
         handleUnauthorizedError(next);
       }
-      // no token provider
     } else {
+      // No Token Provided.
       handleUnauthorizedError(next);
     }
-  } catch (error) {
+  } catch (err) {
     handleUnauthorizedError(next);
   }
 };
