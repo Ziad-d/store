@@ -21,3 +21,20 @@ export const getCurrentOrderByUserId = async (
     next(error);
   }
 };
+
+export const createOrder = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const order = await orderModel.createOrder(req.body);
+    res.json({
+      status: 'success',
+      data: { ...order },
+      message: 'Order created Successfully',
+    });
+  } catch (error) {
+    next(error);
+  }
+};

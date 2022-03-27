@@ -16,6 +16,25 @@ class OrderModel {
       );
     }
   }
+
+  async createOrder(o: Order): Promise<Order> {
+    try {
+      const connection = await db.connect();
+      const sql =
+        'INSERT INTO orders (product_id, quantity, user_id, status) VALUES($1, $2, $3, $4) RETURNING *';
+      const result = await connection.query(sql, [
+        o.product_id,
+        o.quantity,
+        o.user_id,
+        o.status,
+      ]);
+      connection.release();
+
+      return result.rows[0];
+    } catch (error) {
+      throw new Error(`Could not create order. Error: ${error as Error}`);
+    }
+  }
 }
 
 export default OrderModel;

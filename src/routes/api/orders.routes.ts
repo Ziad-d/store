@@ -7,5 +7,6 @@ const routes = Router();
 routes
   .route('/current/:user_id')
   .get(authenticationMiddleware, controllers.getCurrentOrderByUserId);
+routes.route('/').post(controllers.createOrder);
 
 export default routes;
